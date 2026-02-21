@@ -250,34 +250,51 @@ class WaterGlassSimulator {
     }
     
     createSplash() {
-        const splashCount = 3 + Math.floor(Math.random() * 3);
+        const splashCount = 5 + Math.floor(Math.random() * 5); // 增加水花數量
         
         for (let i = 0; i < splashCount; i++) {
             const particle = document.createElement('div');
             particle.className = 'splash-particle';
             
-            // 隨機位置（從杯口噴出）
-            const startX = 30 + Math.random() * 40; // 30-70%
-            const startY = 0;
+            // 隨機大小（藝術化變化）
+            const size = 8 + Math.random() * 12;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            // 隨機位置（從杯口噴出，更廣範圍）
+            const startX = 20 + Math.random() * 60; // 20-80%
+            const startY = -5 + Math.random() * 10; // 從杯口上方開始
             
             particle.style.left = `${startX}%`;
             particle.style.top = `${startY}%`;
             
+            // 隨機顏色變化（藍色系漸變）
+            const hue = 200 + Math.random() * 20; // 200-220 (藍色)
+            const saturation = 80 + Math.random() * 20; // 80-100%
+            const lightness = 60 + Math.random() * 20; // 60-80%
+            particle.style.background = `radial-gradient(circle, 
+                hsla(${hue}, ${saturation}%, ${lightness + 20}%, 0.95) 0%, 
+                hsla(${hue}, ${saturation}%, ${lightness}%, 0.8) 100%)`;
+            
             this.splash.appendChild(particle);
             
-            // 動畫
-            const angle = Math.random() * Math.PI * 0.5 - Math.PI * 0.25;
-            const speed = 100 + Math.random() * 100;
+            // 藝術化動畫（帶旋轉和曲線軌跡）
+            const angle = Math.random() * Math.PI * 0.6 - Math.PI * 0.3; // 更大的角度範圍
+            const speed = 80 + Math.random() * 120;
             const vx = Math.cos(angle) * speed;
-            const vy = Math.sin(angle) * speed - 50;
-            const gravity = 200;
+            const vy = Math.sin(angle) * speed - 60;
+            const gravity = 220;
+            const rotation = Math.random() * 360; // 初始旋轉角度
+            const rotationSpeed = (Math.random() - 0.5) * 720; // 旋轉速度
             
             let x = startX;
             let y = startY;
             let velocityX = vx;
             let velocityY = vy;
             let opacity = 1;
+            let currentRotation = rotation;
             let startTime = Date.now();
+            let scale = 1;
             
             const animate = () => {
                 const now = Date.now();
@@ -287,11 +304,14 @@ class WaterGlassSimulator {
                 velocityY += gravity * dt;
                 x += velocityX * dt * 0.1;
                 y += velocityY * dt * 0.1;
-                opacity -= dt * 2;
+                opacity -= dt * 1.8; // 更慢的淡出
+                currentRotation += rotationSpeed * dt; // 旋轉
+                scale += dt * 0.3; // 逐漸變大
                 
                 particle.style.left = `${x}%`;
                 particle.style.top = `${y}%`;
                 particle.style.opacity = opacity;
+                particle.style.transform = `rotate(${currentRotation}deg) scale(${scale})`;
                 
                 if (opacity > 0 && y < 100) {
                     requestAnimationFrame(animate);

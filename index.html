@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>💧 喝水模擬器</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 開始畫面 -->
+    <div id="startScreen" class="start-screen">
+        <div class="start-content">
+            <div class="icon">💧</div>
+            <h1>喝水模擬器</h1>
+            <p class="subtitle">把你的 iPhone 變成一杯水</p>
+            
+            <div class="instructions">
+                <div class="instruction-item">
+                    <span class="emoji">📱</span>
+                    <span>傾斜手機來喝水</span>
+                </div>
+                <div class="instruction-item">
+                    <span class="emoji">💦</span>
+                    <span>感受真實的流水效果</span>
+                </div>
+                <div class="instruction-item">
+                    <span class="emoji">🎵</span>
+                    <span>享受音效體驗</span>
+                </div>
+            </div>
+            
+            <button id="startBtn" class="start-btn">開始體驗</button>
+            <p class="permission-note">需要開啟動作感應器權限</p>
+        </div>
+    </div>
+
+    <!-- 主應用 -->
+    <div id="app" class="app" style="display: none;">
+        <!-- 狀態顯示 -->
+        <div id="statusDisplay" class="status-display">
+            <div class="stat-item">
+                <span class="stat-label">水位</span>
+                <span id="waterLevel" class="stat-value">100%</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">傾斜角度</span>
+                <span id="tiltAngle" class="stat-value">0°</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">已喝</span>
+                <span id="drankAmount" class="stat-value">0ml</span>
+            </div>
+        </div>
+
+        <!-- 水杯容器 -->
+        <div class="glass-container-wrapper">
+            <div id="glassContainer" class="glass-container">
+                <!-- 玻璃杯 -->
+                <div class="glass">
+                    <!-- 水 -->
+                    <div id="water" class="water">
+                        <!-- 水面波紋 -->
+                        <div class="water-surface"></div>
+                        <!-- 氣泡效果 -->
+                        <div class="bubbles" id="bubbles"></div>
+                    </div>
+                </div>
+                
+                <!-- 杯子邊框 -->
+                <div class="glass-edge"></div>
+                
+                <!-- 水花飛濺效果 -->
+                <div id="splash" class="splash-container"></div>
+            </div>
+        </div>
+
+        <!-- 控制按鈕 -->
+        <div class="controls">
+            <button id="resetBtn" class="control-btn">
+                <span class="btn-icon">🔄</span>
+                <span class="btn-text">重新裝滿</span>
+            </button>
+            <button id="toggleSound" class="control-btn">
+                <span class="btn-icon">🔊</span>
+                <span class="btn-text">音效</span>
+            </button>
+        </div>
+
+        <!-- 提示訊息 -->
+        <div id="hint" class="hint">
+            傾斜手機來喝水 🍺
+        </div>
+
+        <!-- 訊息提示 -->
+        <div id="message" class="message" style="display: none;"></div>
+    </div>
+
+    <!-- Loading -->
+    <div id="loading" class="loading" style="display: none;">
+        <div class="spinner"></div>
+        <p>正在初始化感應器...</p>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

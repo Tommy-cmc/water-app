@@ -1,6 +1,3 @@
-/* ========================================
-   �典�閮剖�
-   ======================================== */
 * {
     margin: 0;
     padding: 0;
@@ -20,9 +17,6 @@ body {
     -webkit-user-select: none;
 }
 
-/* ========================================
-   �见��恍𢒰
-   ======================================== */
 .start-screen {
     position: fixed;
     top: 0;
@@ -122,9 +116,6 @@ body {
     opacity: 0.7;
 }
 
-/* ========================================
-   銝餅���
-   ======================================== */
 .app {
     width: 100%;
     height: 100%;
@@ -134,7 +125,6 @@ body {
     flex-direction: column;
 }
 
-/* ���钅＊蝷� */
 .status-display {
     position: absolute;
     top: max(20px, env(safe-area-inset-top));
@@ -174,7 +164,6 @@ body {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* 瘞湔𡟵摰孵膥��� */
 .glass-container-wrapper {
     flex: 1;
     display: flex;
@@ -183,7 +172,6 @@ body {
     padding: 120px 20px 140px;
 }
 
-/* 瘞湔𡟵摰孵膥 */
 .glass-container {
     position: relative;
     width: 100%;
@@ -194,7 +182,6 @@ body {
     transition: transform 0.1s ease-out;
 }
 
-/* �餌��� */
 .glass {
     position: relative;
     width: 100%;
@@ -214,7 +201,6 @@ body {
     backdrop-filter: blur(10px);
 }
 
-/* �餌��舫�獢� */
 .glass-edge {
     position: absolute;
     top: 0;
@@ -229,7 +215,6 @@ body {
         inset 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
-/* 瘞� */
 .water {
     position: absolute;
     bottom: 0;
@@ -248,7 +233,6 @@ body {
     filter: drop-shadow(0 -5px 15px rgba(64, 156, 255, 0.5));
 }
 
-/* 瘞港葉���銵栞�憌暹憬皜� */
 .water::before {
     content: '';
     position: absolute;
@@ -306,7 +290,6 @@ body {
     }
 }
 
-/* 瘞港葉�肽�鋆嗪ˇ撅� */
 .water-decorations {
     position: absolute;
     width: 100%;
@@ -386,7 +369,6 @@ body {
     }
 }
 
-/* 瘞湧𢒰瘜Ｗ陸鋆嗪ˇ */
 .wave-crest {
     position: absolute;
     width: 40px;
@@ -433,7 +415,6 @@ body {
     }
 }
 
-/* 瘞湧𢒰瘜Ｙ� - �肽�憸冽聢 */
 .water-surface {
     position: absolute;
     top: -15px;
@@ -490,7 +471,6 @@ body {
     }
 }
 
-/* 瘞�部 */
 .bubbles {
     position: absolute;
     width: 100%;
@@ -553,7 +533,6 @@ body {
     }
 }
 
-/* 瘞渲�憌𥟇蕩��� */
 .splash-container {
     position: absolute;
     top: 0;
@@ -612,7 +591,6 @@ body {
     }
 }
 
-/* �批��厰� */
 .controls {
     position: absolute;
     bottom: max(30px, env(safe-area-inset-bottom));
@@ -655,7 +633,6 @@ body {
     font-size: 1.2rem;
 }
 
-/* �鞟內閮𦠜� */
 .hint {
     position: absolute;
     top: 50%;
@@ -683,7 +660,6 @@ body {
     }
 }
 
-/* 閮𦠜��鞟內 */
 .message {
     position: fixed;
     top: 50%;
@@ -711,7 +687,6 @@ body {
     }
 }
 
-/* Loading */
 .loading {
     position: fixed;
     top: 0;
@@ -744,7 +719,6 @@ body {
     }
 }
 
-/* �閧𧞄��� */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -763,9 +737,6 @@ body {
     }
 }
 
-/* ========================================
-   �踵�撘讛身閮�
-   ======================================== */
 @media (max-height: 700px) {
     .glass-container-wrapper {
         padding: 100px 20px 120px;
@@ -832,7 +803,6 @@ body {
     }
 }
 
-/* Safari �寞��閧� */
 @supports (-webkit-touch-callout: none) {
     body {
         height: -webkit-fill-available;

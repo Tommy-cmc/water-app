@@ -1,7 +1,7 @@
 /* ========================================
-   �脲偌璅⊥挱�� - 撘瑕��� CSS
-   靽格迤嚗朞��舫��脯��憬皜行�頧剹��𡟵摮𣂼之撠�
-   ��𧋦嚗鯝2.2 Enhanced
+   �脲偌璅⊥挱�� - 摰𣬚��� CSS
+   靽格迤嚗𡁏𡟵摮鞾��典虾閬卝��憬皜行�頧剹��換�脰���
+   ��𧋦嚗鯝2.3 Perfect
    ======================================== */
 
 * {
@@ -13,7 +13,6 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    /* �𤣳 撘瑕�蝝怨𠧧瞍詨惜�峕艶 */
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
     overflow: hidden;
     width: 100vw;
@@ -21,7 +20,6 @@ body {
     position: fixed;
     touch-action: none;
     user-select: none;
-    /* �脫迫�峕艶鋡怨��� */
     background-attachment: fixed;
 }
 
@@ -117,7 +115,6 @@ h1 {
     display: flex;
     flex-direction: column;
     position: relative;
-    /* �𤣳 蝣箔��峕艶�𤩺�嚗屸＊蝷� body ��撓撅� */
     background: transparent !important;
 }
 
@@ -157,25 +154,24 @@ h1 {
 }
 
 /* ========================================
-   瘞湔𡟵摰孵膥 - �𤣳 �曉之銝衣蔭銝�
+   瘞湔𡟵摰孵膥 - �𤣳 摰𣬚�蝵桐葉嚗𣬚Ⅱ靽嗪��典虾閬�
    ======================================== */
 .glass-container-wrapper {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* �𤣳 皜𥕦� padding嚗諹��臬��游之 */
-    padding: 1rem;
+    padding: 2rem 1rem;
     position: relative;
     z-index: 1;
 }
 
 .glass-container {
-    /* �𤣳 憓𧼮之撠箏站 */
     width: 320px;
     height: 480px;
-    max-width: 90vw;
-    max-height: 60vh;
+    max-width: 85vw;
+    /* �𤣳 �𣂼���憭折�摨佗�蝣箔�����航� */
+    max-height: 55vh;
     position: relative;
     perspective: 1000px;
 }
@@ -194,13 +190,14 @@ h1 {
         0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
-/* 瘞� - ���𣈯枤���蝝� */
+/* �𤣳 瘞� - �𣈯枤靽格迤嚗𡁜�憪钅�摨行㺿�� 95% */
 .water {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    /* �𤣳 �寧� 95%嚗諹������ 5% 蝛粹�憿舐內�臬藁 */
+    height: 95%;
     background: linear-gradient(
         to top,
         rgba(30, 144, 255, 0.95) 0%,
@@ -237,31 +234,27 @@ h1 {
         rgba(255, 255, 255, 0.4),
         rgba(135, 206, 250, 0.2)
     );
-    /* �𤣳 撘瑕��贝��閧𧞄 */
     animation: swirlRotate 12s infinite linear !important;
     opacity: 0.7;
+    transform-origin: center center;
 }
 
 .swirl-1 {
     top: 15%;
     left: 15%;
     animation-delay: 0s !important;
-    /* �𤣳 憿滚����頧㕑��� */
-    transform-origin: center center;
 }
 
 .swirl-2 {
     top: 45%;
     right: 10%;
     animation-delay: 4s !important;
-    transform-origin: center center;
 }
 
 .swirl-3 {
     bottom: 25%;
     left: 25%;
     animation-delay: 8s !important;
-    transform-origin: center center;
 }
 
 /* 瘞湧𢒰瘜Ｙ� */
@@ -543,10 +536,15 @@ h1 {
     .glass-container {
         width: 280px;
         height: 400px;
+        max-height: 50vh;
     }
     
     .stat-value {
         font-size: 1.3rem;
+    }
+    
+    .glass-container-wrapper {
+        padding: 1.5rem 1rem;
     }
 }
 
@@ -570,6 +568,7 @@ h1 {
     .glass-container {
         width: 360px;
         height: 520px;
+        max-height: 60vh;
     }
 }
 
@@ -584,7 +583,7 @@ h1 {
     }
 }
 
-/* �𤣳 撘瑕��峕艶憿讛𠧧嚗��撠齿�鈭𤤿�讛汗�剁� */
+/* 撘瑕��峕艶憿讛𠧧 */
 html {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
 }

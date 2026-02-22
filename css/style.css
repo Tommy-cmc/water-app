@@ -1,7 +1,7 @@
 /* ========================================
-   喝水模擬器 - 全螢幕沉浸式版本
-   移除 Header、放大杯子到 Footer
-   版本：v2.4 Fullscreen Immersive
+   喝水模擬器 - 🔥 火焰漩渦版本 v2.6
+   修正：漩渦 z-index、更亮火焰紅色、氣泡跟隨水面
+   版本：v2.6 Fire Swirl (Based on style-final.css)
    ======================================== */
 
 * {
@@ -107,7 +107,7 @@ h1 {
 }
 
 /* ========================================
-   主應用容器 - 🔥 全螢幕佈局
+   主應用容器 - 全螢幕佈局
    ======================================== */
 .app {
     width: 100%;
@@ -118,38 +118,32 @@ h1 {
     background: transparent !important;
 }
 
-/* 🔥 隱藏狀態顯示欄 */
+/* 隱藏狀態顯示欄 */
 .status-display {
     display: none !important;
 }
 
 /* ========================================
-   水杯容器 - 🔥 從頂部延伸到 Footer
+   水杯容器 - 從頂部延伸到 Footer
    ======================================== */
 .glass-container-wrapper {
-    /* 🔥 佔據從頂部到 Footer 的所有空間 */
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* 🔥 移除 padding，讓杯子可以更大 */
     padding: 0;
     position: relative;
     z-index: 1;
-    /* 🔥 確保不會超過 controls 區域 */
     padding-bottom: 0;
 }
 
 .glass-container {
-    /* 🔥 放大杯子，填滿可用空間 */
     width: 95vw;
     max-width: 600px;
-    /* 🔥 高度從頂部到 Footer 按鈕上方 */
     height: calc(100vh - 110px);
     max-height: none;
     position: relative;
     perspective: 1000px;
-    /* 🔥 確保杯子底部緊貼 Footer */
     margin-bottom: 0;
 }
 
@@ -157,7 +151,7 @@ h1 {
 .glass {
     position: relative;
     width: 100%;
-    height: 80%;
+    height: 100%;
     background: rgba(255, 255, 255, 0.08);
     border-radius: 30px;
     border: 5px solid rgba(255, 255, 255, 0.4);
@@ -167,13 +161,13 @@ h1 {
         0 15px 50px rgba(0, 0, 0, 0.3);
 }
 
-/* 水 - 初始高度 95% */
+/* 🔥 水 - 初始高度改為 98%（杯頂更短） */
 .water {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 95%;
+    height: 98%;
     background: linear-gradient(
         to top,
         rgba(30, 144, 255, 0.95) 0%,
@@ -199,7 +193,7 @@ h1 {
     pointer-events: none;
 }
 
-/* 🔥🔥🔥 火焰漩渦 - 橘紅色系 */
+/* 🔥🔥🔥 火焰漩渦 - 更亮的橘紅色 + 高 z-index */
 .water-swirl {
     position: absolute;
     width: 150px;
@@ -207,15 +201,17 @@ h1 {
     border-radius: 50%;
     background: radial-gradient(
         circle at 30% 30%,
-        rgba(255, 100, 50, 0.7),   /* 火焰橘紅 */
-        rgba(255, 69, 0, 0.4)      /* 暗紅色 (OrangeRed) */
+        rgba(255, 100, 50, 0.85),    /* 🔥 亮橘紅色 */
+        rgba(255, 69, 0, 0.6)        /* 🔥 OrangeRed */
     );
     animation: swirlRotate 12s infinite linear !important;
-    opacity: 0.85;
+    opacity: 0.95;
     transform-origin: center center;
+    /* 🔥 關鍵修正：提高 z-index 確保漩渦在水面上方 */
+    z-index: 15 !important;
     box-shadow: 
-        0 0 40px rgba(255, 69, 0, 0.6),
-        inset 0 0 25px rgba(255, 140, 0, 0.5);
+        0 0 40px rgba(255, 69, 0, 0.7),        /* 外發光 */
+        inset 0 0 30px rgba(255, 140, 0, 0.6); /* 內發光 */
 }
 
 .swirl-1 {
@@ -276,10 +272,14 @@ h1 {
     animation: waveBob 1.5s infinite ease-in-out 1s;
 }
 
-/* 氣泡容器 */
+/* 🔥 氣泡容器 - 改為相對於水面定位 */
 .bubbles {
     position: absolute;
+    /* 從水底開始 */
+    bottom: 0;
+    left: 0;
     width: 100%;
+    /* 高度固定為整個水的高度 */
     height: 100%;
     overflow: hidden;
     border-radius: 0 0 25px 25px;
@@ -288,12 +288,15 @@ h1 {
 
 .bubble {
     position: absolute;
+    /* 從底部開始，不是從頂部 */
+    bottom: 0;
     border-radius: 50%;
     background: radial-gradient(
         circle at 30% 30%,
         rgba(255, 255, 255, 0.9),
         rgba(255, 255, 255, 0.4)
     );
+    /* 🔥 動畫改為從底部往上飄 */
     animation: bubbleRise linear infinite;
     box-shadow: 
         inset 0 0 15px rgba(255, 255, 255, 0.6),
@@ -355,7 +358,6 @@ h1 {
     backdrop-filter: blur(10px);
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     z-index: 100;
-    /* 🔥 確保 Footer 固定在底部 */
     min-height: 90px;
 }
 
@@ -470,15 +472,15 @@ h1 {
 @keyframes swirlRotate {
     0% { 
         transform: rotate(0deg) scale(1);
-        opacity: 0.7;
+        opacity: 0.8;
     }
     50% { 
         transform: rotate(180deg) scale(1.1);
-        opacity: 0.5;
+        opacity: 0.6;
     }
     100% { 
         transform: rotate(360deg) scale(1);
-        opacity: 0.7;
+        opacity: 0.8;
     }
 }
 
@@ -492,19 +494,23 @@ h1 {
     50% { transform: translateY(-8px) scale(1.1); }
 }
 
+/* 🔥 氣泡上升動畫 - 從底部往上 */
 @keyframes bubbleRise {
     0% {
-        transform: translateY(0) scale(0);
+        bottom: 0;
+        transform: translateX(0) scale(0);
         opacity: 0;
     }
     10% {
         opacity: 1;
+        transform: scale(1);
     }
     90% {
         opacity: 1;
     }
     100% {
-        transform: translateY(-100vh) scale(1);
+        bottom: 100%;
+        transform: translateX(var(--bubble-drift, 0)) scale(1.2);
         opacity: 0;
     }
 }

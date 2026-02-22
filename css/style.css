@@ -1,7 +1,7 @@
 /* ========================================
-   喝水模擬器 - 🔥 火焰漩渦版本 v2.6
-   修正：漩渦 z-index、更亮火焰紅色、氣泡跟隨水面
-   版本：v2.6 Fire Swirl (Based on style-final.css)
+   喝水模擬器 - 🔥 真正的火焰漩渦版本 v2.7
+   修正：真實火焰漩渦紋理 + 多層效果
+   版本：v2.7 Real Fire Swirl Texture
    ======================================== */
 
 * {
@@ -193,43 +193,69 @@ h1 {
     pointer-events: none;
 }
 
-/* 🔥🔥🔥 火焰漩渦 - 更亮的橘紅色 + 高 z-index */
+/* 🔥🔥🔥 真實火焰漩渦 - 多層紋理效果 */
 .water-swirl {
     position: absolute;
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    background: radial-gradient(
-        circle at 30% 30%,
-        rgba(255, 100, 50, 0.85),    /* 🔥 亮橘紅色 */
-        rgba(255, 69, 0, 0.6)        /* 🔥 OrangeRed */
-    );
+    /* 🔥 火焰漩渦背景 - 使用錐形漸層創造漩渦效果 */
+    background: 
+        /* 第一層：火焰中心 */
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(255, 200, 100, 0.9) 0%,
+            rgba(255, 150, 50, 0.7) 20%,
+            transparent 40%
+        ),
+        /* 第二層：漩渦紋理 - 使用重複徑向漸層 */
+        repeating-conic-gradient(
+            from 0deg at 50% 50%,
+            rgba(255, 100, 50, 0.8) 0deg,
+            rgba(255, 69, 0, 0.6) 30deg,
+            rgba(200, 50, 30, 0.4) 60deg,
+            rgba(255, 100, 50, 0.8) 90deg
+        ),
+        /* 第三層：外圍火焰 */
+        radial-gradient(
+            circle at 50% 50%,
+            transparent 50%,
+            rgba(255, 69, 0, 0.5) 70%,
+            rgba(200, 40, 0, 0.3) 100%
+        );
     animation: swirlRotate 12s infinite linear !important;
-    opacity: 0.95;
+    opacity: 0.9;
     transform-origin: center center;
-    /* 🔥 關鍵修正：提高 z-index 確保漩渦在水面上方 */
     z-index: 15 !important;
     box-shadow: 
-        0 0 40px rgba(255, 69, 0, 0.7),        /* 外發光 */
-        inset 0 0 30px rgba(255, 140, 0, 0.6); /* 內發光 */
+        0 0 50px rgba(255, 100, 0, 0.8),       /* 外發光 */
+        0 0 30px rgba(255, 69, 0, 0.6),
+        inset 0 0 40px rgba(255, 140, 0, 0.7); /* 內發光 */
+    /* 添加混合模式增強效果 */
+    mix-blend-mode: screen;
 }
 
 .swirl-1 {
     top: 15%;
     left: 15%;
     animation-delay: 0s !important;
+    /* 第一個漩渦：順時針旋轉 */
 }
 
 .swirl-2 {
     top: 45%;
     right: 10%;
     animation-delay: 4s !important;
+    /* 第二個漩渦：逆時針旋轉（更快） */
+    animation: swirlRotate 10s infinite linear reverse !important;
 }
 
 .swirl-3 {
     bottom: 25%;
     left: 25%;
     animation-delay: 8s !important;
+    /* 第三個漩渦：順時針旋轉（較慢） */
+    animation: swirlRotate 15s infinite linear !important;
 }
 
 /* 水面波紋 */

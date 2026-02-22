@@ -1,7 +1,7 @@
 /* ========================================
-   喝水模擬器 - 🔥 真正的火焰漩渦版本 v2.7
-   修正：真實火焰漩渦紋理 + 多層效果
-   版本：v2.7 Real Fire Swirl Texture
+   喝水模擬器 - 🌊 中國水墨畫風格 v2.8
+   修正：水墨畫流水漩渦 + 藝術水花
+   版本：v2.8 Chinese Watercolor Style
    ======================================== */
 
 * {
@@ -161,7 +161,7 @@ h1 {
         0 15px 50px rgba(0, 0, 0, 0.3);
 }
 
-/* 🔥 水 - 初始高度改為 98%（杯頂更短） */
+/* 🌊 水 - 初始高度改為 98%（杯頂更短） */
 .water {
     position: absolute;
     bottom: 0;
@@ -193,72 +193,84 @@ h1 {
     pointer-events: none;
 }
 
-/* 🔥🔥🔥 真實火焰漩渦 - 多層紋理效果 */
+/* 🌊🌊🌊 中國水墨畫風格漩渦 - 流動線條藝術效果 */
 .water-swirl {
     position: absolute;
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
-    /* 🔥 火焰漩渦背景 - 使用錐形漸層創造漩渦效果 */
+    /* 🌊 水墨畫漩渦背景 - 多層半透明漸層 */
     background: 
-        /* 第一層：火焰中心 */
+        /* 第一層：白色泡沫中心 */
         radial-gradient(
-            circle at 50% 50%,
-            rgba(255, 200, 100, 0.9) 0%,
-            rgba(255, 150, 50, 0.7) 20%,
-            transparent 40%
+            circle at 40% 40%,
+            rgba(255, 255, 255, 0.9) 0%,
+            rgba(200, 230, 255, 0.6) 15%,
+            transparent 35%
         ),
-        /* 第二層：漩渦紋理 - 使用重複徑向漸層 */
+        /* 第二層：淺藍色漩渦線條（細條紋） */
         repeating-conic-gradient(
             from 0deg at 50% 50%,
-            rgba(255, 100, 50, 0.8) 0deg,
-            rgba(255, 69, 0, 0.6) 30deg,
-            rgba(200, 50, 30, 0.4) 60deg,
-            rgba(255, 100, 50, 0.8) 90deg
+            rgba(100, 180, 255, 0.8) 0deg,
+            rgba(70, 150, 230, 0.6) 10deg,
+            rgba(50, 120, 200, 0.4) 20deg,
+            rgba(100, 180, 255, 0.8) 30deg
         ),
-        /* 第三層：外圍火焰 */
+        /* 第三層：深藍色漩渦核心 */
+        repeating-conic-gradient(
+            from 30deg at 50% 50%,
+            rgba(50, 130, 210, 0.7) 0deg,
+            rgba(30, 100, 180, 0.5) 15deg,
+            rgba(20, 70, 150, 0.3) 30deg,
+            rgba(50, 130, 210, 0.7) 45deg
+        ),
+        /* 第四層：外圈流動感 */
         radial-gradient(
             circle at 50% 50%,
-            transparent 50%,
-            rgba(255, 69, 0, 0.5) 70%,
-            rgba(200, 40, 0, 0.3) 100%
+            transparent 40%,
+            rgba(80, 160, 240, 0.5) 60%,
+            rgba(50, 120, 200, 0.3) 100%
         );
-    animation: swirlRotate 12s infinite linear !important;
+    animation: swirlRotate 18s infinite ease-in-out !important;
     opacity: 0.9;
     transform-origin: center center;
     z-index: 15 !important;
     box-shadow: 
-        0 0 50px rgba(255, 100, 0, 0.8),       /* 外發光 */
-        0 0 30px rgba(255, 69, 0, 0.6),
-        inset 0 0 40px rgba(255, 140, 0, 0.7); /* 內發光 */
-    /* 添加混合模式增強效果 */
-    mix-blend-mode: screen;
+        0 0 60px rgba(100, 180, 255, 0.7),       /* 藍色外發光 */
+        0 0 40px rgba(150, 210, 255, 0.5),
+        inset 0 0 50px rgba(200, 230, 255, 0.6); /* 白色內發光 */
+    /* 🎨 水墨效果 */
+    filter: blur(1.5px) contrast(1.2);
 }
 
 .swirl-1 {
     top: 15%;
     left: 15%;
     animation-delay: 0s !important;
-    /* 第一個漩渦：順時針旋轉 */
+    /* 第一個漩渦：順時針緩慢旋轉 */
+    animation: swirlRotate 20s infinite ease-in-out !important;
+    filter: blur(1px) contrast(1.2);
 }
 
 .swirl-2 {
     top: 45%;
     right: 10%;
-    animation-delay: 4s !important;
-    /* 第二個漩渦：逆時針旋轉（更快） */
-    animation: swirlRotate 10s infinite linear reverse !important;
+    animation-delay: 6s !important;
+    /* 第二個漩渦：逆時針旋轉 */
+    animation: swirlRotate 16s infinite ease-in-out reverse !important;
+    filter: blur(2px) contrast(1.1);
 }
 
 .swirl-3 {
     bottom: 25%;
     left: 25%;
-    animation-delay: 8s !important;
-    /* 第三個漩渦：順時針旋轉（較慢） */
-    animation: swirlRotate 15s infinite linear !important;
+    animation-delay: 12s !important;
+    /* 第三個漩渦：順時針更慢 */
+    animation: swirlRotate 24s infinite ease-in-out !important;
+    filter: blur(1.2px) contrast(1.3);
 }
 
-/* 水面波紋 */
+/* 🌊 水面波紋 - 水墨畫風格 */
 .water-surface {
     position: absolute;
     top: -25px;
@@ -267,45 +279,46 @@ h1 {
     height: 60px;
     background: linear-gradient(
         to bottom,
-        rgba(135, 206, 250, 0.7),
+        rgba(180, 220, 255, 0.7),
+        rgba(150, 200, 240, 0.4),
         transparent
     );
-    animation: waterWave 2s infinite ease-in-out;
+    animation: waterWave 3s infinite ease-in-out;
     z-index: 5;
+    filter: blur(2px);
 }
 
 .wave-crest {
     position: absolute;
-    width: 40px;
-    height: 12px;
-    background: rgba(255, 255, 255, 0.5);
+    width: 50px;
+    height: 15px;
+    background: rgba(220, 240, 255, 0.8);
     border-radius: 50%;
     top: 10px;
+    filter: blur(1px);
 }
 
 .crest-1 { 
     left: 15%; 
-    animation: waveBob 1.5s infinite ease-in-out;
+    animation: waveBob 2s infinite ease-in-out;
 }
 
 .crest-2 { 
     left: 50%; 
-    animation: waveBob 1.5s infinite ease-in-out 0.5s;
+    animation: waveBob 2s infinite ease-in-out 0.6s;
 }
 
 .crest-3 { 
     left: 80%; 
-    animation: waveBob 1.5s infinite ease-in-out 1s;
+    animation: waveBob 2s infinite ease-in-out 1.2s;
 }
 
-/* 🔥 氣泡容器 - 改為相對於水面定位 */
+/* 🌊 氣泡容器 - 改為相對於水面定位 */
 .bubbles {
     position: absolute;
-    /* 從水底開始 */
     bottom: 0;
     left: 0;
     width: 100%;
-    /* 高度固定為整個水的高度 */
     height: 100%;
     overflow: hidden;
     border-radius: 0 0 25px 25px;
@@ -314,7 +327,6 @@ h1 {
 
 .bubble {
     position: absolute;
-    /* 從底部開始，不是從頂部 */
     bottom: 0;
     border-radius: 50%;
     background: radial-gradient(
@@ -322,7 +334,6 @@ h1 {
         rgba(255, 255, 255, 0.9),
         rgba(255, 255, 255, 0.4)
     );
-    /* 🔥 動畫改為從底部往上飄 */
     animation: bubbleRise linear infinite;
     box-shadow: 
         inset 0 0 15px rgba(255, 255, 255, 0.6),
@@ -342,7 +353,7 @@ h1 {
     box-shadow: 0 0 40px rgba(135, 206, 250, 0.4);
 }
 
-/* 水花飛濺 */
+/* 🌊 水花飛濺 - 水墨畫風格 */
 .splash-container {
     position: absolute;
     width: 100%;
@@ -356,19 +367,21 @@ h1 {
 
 .splash-particle {
     position: absolute;
+    width: 14px;
+    height: 18px;
     background: radial-gradient(
         ellipse at 30% 30%,
-        rgba(200, 230, 255, 0.9),
-        rgba(150, 200, 240, 0.6),
-        rgba(100, 170, 220, 0.3)
+        rgba(200, 230, 255, 0.95),
+        rgba(150, 200, 240, 0.7),
+        rgba(100, 170, 220, 0.4)
     );
     border-radius: 50%;
     box-shadow: 
-        0 0 20px rgba(180, 220, 255, 0.7),
-        0 0 10px rgba(150, 200, 240, 0.5);
-    filter: blur(0.5px);
-    /* 水滴形狀 */
-    transform: scaleY(1.3);
+        0 0 20px rgba(180, 220, 255, 0.8),
+        0 0 10px rgba(150, 200, 240, 0.6);
+    filter: blur(0.8px);
+    /* 橢圓形水滴 */
+    transform: scaleY(1.4);
 }
 
 /* ========================================
@@ -497,32 +510,53 @@ h1 {
     50% { opacity: 0.5; }
 }
 
+/* 🌊 水墨畫風格旋轉動畫 - 柔和緩動 */
 @keyframes swirlRotate {
     0% { 
         transform: rotate(0deg) scale(1);
-        opacity: 0.8;
+        opacity: 0.9;
+    }
+    25% {
+        transform: rotate(90deg) scale(1.05);
+        opacity: 0.85;
     }
     50% { 
         transform: rotate(180deg) scale(1.1);
-        opacity: 0.6;
+        opacity: 0.8;
+    }
+    75% {
+        transform: rotate(270deg) scale(1.05);
+        opacity: 0.85;
     }
     100% { 
         transform: rotate(360deg) scale(1);
-        opacity: 0.8;
+        opacity: 0.9;
     }
 }
 
 @keyframes waterWave {
-    0%, 100% { transform: scaleY(1) translateY(0); }
-    50% { transform: scaleY(1.3) translateY(-5px); }
+    0%, 100% { 
+        transform: scaleY(1) translateY(0);
+        opacity: 0.7;
+    }
+    50% { 
+        transform: scaleY(1.5) translateY(-10px);
+        opacity: 0.9;
+    }
 }
 
 @keyframes waveBob {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-8px) scale(1.1); }
+    0%, 100% { 
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+    }
+    50% { 
+        transform: translateY(-10px) scale(1.15);
+        opacity: 1;
+    }
 }
 
-/* 🔥 氣泡上升動畫 - 從底部往上 */
+/* 🌊 氣泡上升動畫 - 從底部往上 */
 @keyframes bubbleRise {
     0% {
         bottom: 0;
@@ -557,8 +591,8 @@ h1 {
     }
     
     .water-swirl {
-        width: 120px;
-        height: 120px;
+        width: 160px;
+        height: 160px;
     }
 }
 
@@ -588,8 +622,8 @@ h1 {
     }
     
     .water-swirl {
-        width: 100px;
-        height: 100px;
+        width: 140px;
+        height: 140px;
     }
 }
 

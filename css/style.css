@@ -356,17 +356,19 @@ h1 {
 
 .splash-particle {
     position: absolute;
-    width: 16px;
-    height: 16px;
     background: radial-gradient(
-        circle,
-        rgba(135, 206, 250, 1),
-        rgba(70, 180, 255, 0.9)
+        ellipse at 30% 30%,
+        rgba(200, 230, 255, 0.9),
+        rgba(150, 200, 240, 0.6),
+        rgba(100, 170, 220, 0.3)
     );
     border-radius: 50%;
     box-shadow: 
-        0 0 15px rgba(135, 206, 250, 0.9),
-        0 0 30px rgba(70, 180, 255, 0.6);
+        0 0 20px rgba(180, 220, 255, 0.7),
+        0 0 10px rgba(150, 200, 240, 0.5);
+    filter: blur(0.5px);
+    /* 水滴形狀 */
+    transform: scaleY(1.3);
 }
 
 /* ========================================
